@@ -1,26 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Theme from './shared/Theme'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import Start from './containers/start/Start'
+import styled from 'styled-components'
+import './App.css'
+import Session from './containers/session/Session'
+
+const AppContainer = styled.div`
+  background-color: ${p => p.theme.colors.darkgreen};
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`
+
+const Content = styled.div`
+  max-width: 1024px;
+  width: 100%;
+`
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Theme>
+            <Router>
+                <AppContainer>
+                    <Content>
+                        <Route path={'/'} exact>
+                            <Start/>
+                        </Route>
+                        <Route path={'/break-session'} exact>
+                            <Session/>
+                        </Route>
+                    </Content>
+                </AppContainer>
+            </Router>
+        </Theme>
+    )
 }
 
-export default App;
+export default App

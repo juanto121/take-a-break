@@ -37,19 +37,27 @@ const Session = () => {
     const [currentUsername, setCurrentUsername] = useState('')
 
     const [currentRoutine, setCurrentRoutine] = useState(null)
-
     const [currentStep, setCurrentStep] = useState(0)
 
+    const [userSessions, setUserSessions] = useState([])
+
     const startSession = async (email) => {
-        await BreakService.upsertSession({ email, started: true })
+        await BreakService.startSession({ email, started: true })
+    }
+
+    const retrieveUserSessions = async (email) => {
+        const sessions = await BreakService.getUserSessions(email)
+        setUserSessions(sessions)
     }
 
     useEffect(() => {
         const user = StorageService.getCurrentUser()
         setCurrentUsername(user.displayName)
         setCurrentUserEmail(user.email)
-        if(user.email)
+        if(user.email) {
+            retrieveUserSessions(user.email)
             startSession(user.email)
+        }
     }, [])
 
     useEffect(() => {
@@ -61,7 +69,7 @@ const Session = () => {
     }, [])
 
     const onFinisSession = async () => {
-        await BreakService.upsertSession({ email: currentUserEmail, completed: true })
+        await BreakService.completeSession({ email: currentUserEmail, completed: true })
     }
 
     if (!currentRoutine) {
@@ -83,7 +91,7 @@ const Session = () => {
             </Routine>
             <RoutineActions finishSession={onFinisSession}></RoutineActions>
             <Goals>
-                <ActivityLog/>
+                <ActivityLog sessions={userSessions}/>
                 <Reasons></Reasons>
             </Goals>
 

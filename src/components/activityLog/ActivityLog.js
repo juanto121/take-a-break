@@ -1,6 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
 
+const KICK_OFF_DATE = new Date("2020-05-05T05:00:00.000Z")
+
+const daysBetween = (firstDate, secondDate) => {
+    const oneDay = 24 * 60 * 60 * 1000
+    const diffDays = Math.round(Math.abs((firstDate - secondDate) / oneDay))
+    return diffDays
+}
+
 const ActivityLogContainer = styled.div`
   margin-bottom: 30px;
 `
@@ -21,10 +29,18 @@ for (let i = 0; i < 30; i++) {
     dates.push({ order: i })
 }
 
-const ActivityLog = () => {
-    const dots = dates.map((date, i) => {
+const ActivityLog = ({sessions}) => {
+    let dots = dates.map((date, i) => {
         return (<ActivityDot key={i}/>)
     })
+
+    sessions.forEach((session) => {
+        debugger
+        const sessionDate = new Date(session.date)
+        const daysDiff = daysBetween(KICK_OFF_DATE, sessionDate)
+        dots[daysDiff] = (<ActivityDot key={daysDiff} active={true}></ActivityDot>)
+    })
+
     return (
         <ActivityLogContainer>
             <Title>
@@ -40,13 +56,13 @@ const ActivityLog = () => {
 const ActivityDotContainer = styled.div`
   width: 28px;
   height: 28px;
-  background-color: ${p => p.theme.colors.lightgreen};
+  background-color: ${p => p.active ? "yellow" : p.theme.colors.lightgreen};
   border-radius: 50%;
 `
 
-const ActivityDot = () => {
+const ActivityDot = ({active}) => {
     return (
-        <ActivityDotContainer>
+        <ActivityDotContainer active={active}>
 
         </ActivityDotContainer>
     )

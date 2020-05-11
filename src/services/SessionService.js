@@ -1,11 +1,20 @@
 import axios from 'axios'
 
-const BREAK_API_URL = 'https://2i9n0ifyi6.execute-api.us-east-2.amazonaws.com/prod'
+const BREAK_API_URL = 'https://853tszi6z4.execute-api.us-east-2.amazonaws.com/prod'
 
 class BreakService {
-    static async upsertSession({email, started = true, completed = false}) {
+    static async startSession({email, started = true, completed = false}) {
         const session = await axios({
-            url: `${BREAK_API_URL}/sessions`,
+            url: `${BREAK_API_URL}/sessions/start`,
+            method: 'put',
+            data: {email, started, completed}
+        })
+        return session
+    }
+
+    static async completeSession({email, started = true, completed = false}) {
+        const session = await axios({
+            url: `${BREAK_API_URL}/sessions/complete`,
             method: 'put',
             data: {email, started, completed}
         })
@@ -20,6 +29,7 @@ class BreakService {
             })
             return routine.data
         } catch(err) {
+            debugger
             console.error(err)
             return null
         }
@@ -31,7 +41,7 @@ class BreakService {
                 url: `${BREAK_API_URL}/sessions/${email}`,
                 method: 'get'
             })
-            return sessions
+            return sessions.data
         } catch(err) {
             console.error(err)
             return null

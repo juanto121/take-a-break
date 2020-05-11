@@ -26,10 +26,13 @@ const Timer = ({ timeStart = new Date().getTime() }) => {
 
     const [timeLeft, setTimeLeft] = useState(MAX_TIME)
 
+    /*
     useInterval(() => {
         const now = new Date().getTime()
         setTimeLeft(timeLeft - (now - timeStart) / 1000)
     }, 1000)
+
+     */
 
     return (
         <TimerContainer>

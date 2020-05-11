@@ -2,17 +2,31 @@ import React from 'react'
 import styled from 'styled-components'
 
 const MessageContainer = styled.h1`
-  color: ${p=> p.theme.colors.palegreen};
+  color: ${p => p.theme.colors.palegreen};
   text-align: center;
-  font-weight: 900;
   max-width: 500px;
   margin-bottom: 50px;
 `
 
-const EncouragingMessage = ({ message }) => {
+const Message = styled.div`
+text-align: start;
+`
+
+const Author = styled.div`
+  font-size: 0.8em;
+  text-align: end;
+  color: ${p=>p.theme.colors.lightgreen}
+`
+
+const EncouragingMessage = ({ message, author, authorLink }) => {
     return (
         <MessageContainer>
-            { message }
+            <Message>
+                {message}
+            </Message>
+            <Author>
+                {author}
+            </Author>
         </MessageContainer>
     )
 }

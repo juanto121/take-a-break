@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import EncouragingMessage from '../../components/encouragingMessage/EncouragingMessage'
-import { withRouter } from 'react-router-dom'
+import { useAuth } from '../../shared/Auth'
 
 const StartContainer = styled.div`
   padding: 0 10px;
@@ -15,27 +15,6 @@ const FormContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-`
-
-const EmailInput = styled.input`
-  background-color: ${p => p.theme.colors.lightgreen};
-  border: none;
-  border-radius: 5px;
-  font-size: 2em;
-  color: white;
-  padding: 10px 0;
-  
-  &:focus{
-    outline: none;
-  }
-  
-  &::placeholder {
-    padding-left: 10px;
-    color: ${p => p.theme.colors.darkgreen};
-  }
-  
-  width: 100%;
-  max-width: 500px;
 `
 
 const StartButton = styled.button`
@@ -53,17 +32,20 @@ const StartButton = styled.button`
   }
 `
 
+const Start = () => {
 
-const Start = ({ history }) => {
+    const { signInWithPopup } = useAuth()
+
     return (
         <StartContainer>
             <FormContainer>
-                <EncouragingMessage message="This should be a random encouragement message"/>
-                <EmailInput placeholder="fulanito@aifund.ai"/>
-                <StartButton onClick={ () => history.push('/break-session')}>Start!</StartButton>
+                <EncouragingMessage
+                    message="I think it's important to try to be present with whatever it is you're doing. And if you can't be present, take a break."
+                    author={'Emily Giffin'} authorLink={'https://en.wikipedia.org/wiki/Emily_Giffin'}/>
+                <StartButton onClick={signInWithPopup}>Continue with Google</StartButton>
             </FormContainer>
         </StartContainer>
     )
 }
 
-export default withRouter(Start)
+export default Start

@@ -5,6 +5,7 @@ import Start from './containers/start/Start'
 import styled from 'styled-components'
 import './App.css'
 import Session from './containers/session/Session'
+import AuthProvider from './shared/Auth'
 
 const AppContainer = styled.div`
   background-color: ${p => p.theme.colors.darkgreen};
@@ -15,25 +16,28 @@ const AppContainer = styled.div`
 `
 
 const Content = styled.div`
-  max-width: 1024px;
+  max-width: 800px;
   width: 100%;
+  padding: 0 20px;
 `
 
 function App() {
     return (
         <Theme>
-            <Router>
-                <AppContainer>
-                    <Content>
-                        <Route path={'/'} exact>
-                            <Start/>
-                        </Route>
-                        <Route path={'/break-session'} exact>
-                            <Session/>
-                        </Route>
-                    </Content>
-                </AppContainer>
-            </Router>
+            <AuthProvider>
+                <Router>
+                    <AppContainer>
+                        <Content>
+                            <Route path={'/'} exact>
+                                <Start/>
+                            </Route>
+                            <Route path={'/break-session'} exact>
+                                <Session/>
+                            </Route>
+                        </Content>
+                    </AppContainer>
+                </Router>
+            </AuthProvider>
         </Theme>
     )
 }

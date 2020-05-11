@@ -5,15 +5,13 @@ const RoutineContainer = styled.div`
   margin-left: -2px;
   padding: 30px 0;
   width: 100%;
-  border: 2px dashed ${p=>p.theme.colors.palegreen};
   border-radius: 10px;
-
 `
 
-const Routine = () => {
+const Routine = ({children}) => {
     return (
         <RoutineContainer>
-
+            {children}
         </RoutineContainer>
     )
 }

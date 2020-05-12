@@ -30,7 +30,7 @@ const Reasons = () => {
         <Container>
             <Title>Why am I doing this?</Title>
             <Arguments>
-                Sitting at a desk, staring a computer screen for prolonged hours puts a strain on our body and affects our ability to
+                Sitting at your desk, staring a computer screen for prolonged hours puts a strain on our body and affects our ability to
                 focus on highly demanding tasks. Taking a simple break helps us regain focus and prevents exhaustion and fatigue.
             </Arguments>
             <Arguments>

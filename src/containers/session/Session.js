@@ -10,6 +10,7 @@ import ActivityLog from '../../components/activityLog/ActivityLog'
 import RoutineActions from '../../components/RoutineActions/RoutineActions'
 import Reasons from '../../components/Reasons/Reasons'
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
+import SessionLoader from '../../components/SessionLoader/SessionLoader'
 
 
 const SessionContainer = styled.div`
@@ -103,7 +104,7 @@ const Session = () => {
     }
 
     if (!currentRoutine) {
-        return <>Loading....</>
+        return <SessionLoader/>
     }
 
     const steps = currentRoutine.resources.map((step, i) => {

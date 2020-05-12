@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const KICK_OFF_DATE = new Date("2020-05-05T05:00:00.000Z")
+const KICK_OFF_DATE = new Date("2020-05-12T05:00:00.000Z")
 
 const daysBetween = (firstDate, secondDate) => {
     const oneDay = 24 * 60 * 60 * 1000
@@ -21,11 +21,14 @@ const Dots = styled.div`
 
 const Title = styled.h3`
   margin-top: 0;
-  color: ${p => p.theme.colors.palegreen}
+  color: ${p => p.theme.colors.palegreen};
+  span {
+    color: ${p=>p.theme.colors.lightgreen};
+  }
 `
 
 let dates = []
-for (let i = 0; i < 30; i++) {
+for (let i = 0; i <= 19; i++) {
     dates.push({ order: i })
 }
 
@@ -43,7 +46,7 @@ const ActivityLog = ({sessions}) => {
     return (
         <ActivityLogContainer>
             <Title>
-                Activity log
+                Activity log. <span>May (12-31)</span>
             </Title>
             <Dots>
                 {dots}

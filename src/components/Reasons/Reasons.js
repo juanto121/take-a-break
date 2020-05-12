@@ -21,7 +21,7 @@ const Arguments = styled.p`
   min-width: 300px;
   font-weight: 400;
   a {
-    color: ${p => p.theme.colors.lightgreen}
+    color: ${p => p.theme.colors.palegreen}
   }
 `
 

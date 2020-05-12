@@ -22,6 +22,7 @@ const StartButton = styled.button`
   font-weight: 600;
   margin-top: 50px;
   border: none;
+  height: 60px;
   border-radius: 5px;
   font-size: 2em;
   padding: 10px 30px;

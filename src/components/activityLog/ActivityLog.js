@@ -35,10 +35,9 @@ const ActivityLog = ({sessions}) => {
     })
 
     sessions.forEach((session) => {
-        debugger
         const sessionDate = new Date(session.date)
         const daysDiff = daysBetween(KICK_OFF_DATE, sessionDate)
-        dots[daysDiff] = (<ActivityDot key={daysDiff} active={true}></ActivityDot>)
+        dots[daysDiff] = (<ActivityDot key={daysDiff} active={true} date={sessionDate}/>)
     })
 
     return (
@@ -56,14 +55,21 @@ const ActivityLog = ({sessions}) => {
 const ActivityDotContainer = styled.div`
   width: 28px;
   height: 28px;
-  background-color: ${p => p.active ? "yellow" : p.theme.colors.lightgreen};
+  background-color: ${p => p.active ? p.theme.colors.coolgreen : p.theme.colors.lightgreen};
   border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  span {
+    margin-top: 5px;
+  }
 `
 
-const ActivityDot = ({active}) => {
+const ActivityDot = ({active, date}) => {
     return (
         <ActivityDotContainer active={active}>
-
+            <span>{date?date.getUTCDate():null}</span>
         </ActivityDotContainer>
     )
 }

@@ -29,7 +29,6 @@ class BreakService {
             })
             return routine.data
         } catch(err) {
-            debugger
             console.error(err)
             return null
         }

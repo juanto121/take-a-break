@@ -9,12 +9,15 @@ import RoutineStep from '../../components/routineStep/RoutineStep'
 import ActivityLog from '../../components/activityLog/ActivityLog'
 import RoutineActions from '../../components/RoutineActions/RoutineActions'
 import Reasons from '../../components/Reasons/Reasons'
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
+
 
 const SessionContainer = styled.div`
   margin-top: 30px;
   display: flex;
   flex-direction: column;
   max-width: 1024px;
+  padding: 0 10px;
 `
 
 const Header = styled.div`
@@ -25,6 +28,7 @@ const Header = styled.div`
 const Goals = styled.div`
   padding: 0 10px;
   display: flex;
+  flex-wrap: wrap;
 `
 
 const Footer = styled.div`
@@ -41,13 +45,35 @@ const Session = () => {
 
     const [userSessions, setUserSessions] = useState([])
 
+    const [sessionCompleted, setSessionCompleted] = useState(false)
+
+    const [completingSession, setCompletingSession] = useState(false)
+
     const startSession = async (email) => {
         await BreakService.startSession({ email, started: true })
     }
 
     const retrieveUserSessions = async (email) => {
+        setCompletingSession(true)
         const sessions = await BreakService.getUserSessions(email)
+        if(sessions.length > 0) {
+            const sortedSessions = sessions.sort((a, b) => {
+                const aDate = new Date(a.date)
+                const bDate = new Date(b.date)
+                return aDate.getTime() - bDate.getTime()
+            })
+
+            const lastSession = sortedSessions[0]
+            const lastSessionDate = new Date(lastSession.date)
+            const lastSessionDay = lastSessionDate.getUTCDate()
+            const todayDay = new Date().getUTCDate()
+            //TODO: Check dates at midnight
+            if (lastSessionDay === todayDay) {
+                setSessionCompleted(true)
+            }
+        }
         setUserSessions(sessions)
+        setCompletingSession(false)
     }
 
     useEffect(() => {
@@ -69,7 +95,11 @@ const Session = () => {
     }, [])
 
     const onFinisSession = async () => {
+        setCompletingSession(true)
         await BreakService.completeSession({ email: currentUserEmail, completed: true })
+        setSessionCompleted(true)
+        setCompletingSession(false)
+        retrieveUserSessions(currentUserEmail)
     }
 
     if (!currentRoutine) {
@@ -89,12 +119,11 @@ const Session = () => {
             <Routine>
                 {steps}
             </Routine>
-            <RoutineActions finishSession={onFinisSession}></RoutineActions>
+            <RoutineActions loading={completingSession} finishSession={onFinisSession} sessionCompleted={sessionCompleted}></RoutineActions>
             <Goals>
                 <ActivityLog sessions={userSessions}/>
                 <Reasons></Reasons>
             </Goals>
-
             <Footer></Footer>
         </SessionContainer>
     )

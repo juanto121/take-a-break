@@ -64,7 +64,7 @@ const Session = () => {
                 return aDate.getTime() - bDate.getTime()
             })
 
-            const lastSession = sortedSessions[0]
+            const lastSession = sortedSessions[sortedSessions.length-1]
             const lastSessionDate = new Date(lastSession.date)
             const lastSessionDay = lastSessionDate.getUTCDate()
             const todayDay = new Date().getUTCDate()

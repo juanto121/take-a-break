@@ -57,7 +57,7 @@ const Session = () => {
     const retrieveUserSessions = async (email) => {
         setCompletingSession(true)
         const sessions = await BreakService.getUserSessions(email)
-        if(sessions.length > 0) {
+        if(sessions && sessions.length > 0) {
             const sortedSessions = sessions.sort((a, b) => {
                 const aDate = new Date(a.date)
                 const bDate = new Date(b.date)

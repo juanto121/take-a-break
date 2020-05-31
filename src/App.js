@@ -7,6 +7,9 @@ import './App.css'
 import Session from './containers/session/Session'
 import AuthProvider from './shared/Auth'
 
+
+import AntiLeaderBoard from './components/AntiLeaderBoard/AntiLeaderBoard'
+
 const AppContainer = styled.div`
   background-color: ${p => p.theme.colors.darkgreen};
   height: 100vh;
@@ -29,10 +32,13 @@ function App() {
                     <AppContainer>
                         <Content>
                             <Route path={'/'} exact>
-                                <Start/>
+                                <Start />
                             </Route>
                             <Route path={'/break-session'} exact>
-                                <Session/>
+                                <Session />
+                            </Route>
+                            <Route path={'/leaderboard'} exact>
+                                <AntiLeaderBoard />
                             </Route>
                         </Content>
                     </AppContainer>

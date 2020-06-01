@@ -28,7 +28,7 @@ const Title = styled.h3`
 `
 
 let dates = []
-for (let i = 0; i <= 19; i++) {
+for (let i = 0; i <= 19+30; i++) {
     dates.push({ order: i })
 }
 
@@ -46,7 +46,7 @@ const ActivityLog = ({sessions}) => {
     return (
         <ActivityLogContainer>
             <Title>
-                Activity log. <span>May (12-31)</span>
+                Activity log. <span>May 12-Jun 31</span>
             </Title>
             <Dots>
                 {dots}

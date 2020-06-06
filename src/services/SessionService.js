@@ -43,7 +43,7 @@ class BreakService {
             return sessions.data
         } catch(err) {
             console.error(err)
-            return null
+            return []
         }
     }
 

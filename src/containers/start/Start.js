@@ -22,9 +22,8 @@ const StartButton = styled.button`
   font-weight: 600;
   margin-top: 50px;
   border: none;
-  height: 60px;
   border-radius: 5px;
-  font-size: 2em;
+  font-size: 1.2em;
   padding: 10px 30px;
   background-color: white;
   color: ${p => p.theme.colors.darkgreen};
@@ -36,6 +35,7 @@ const StartButton = styled.button`
 
 const GoogleLogoContainer = styled.div`
   display: flex;
+  align-items: center;
   img {
     width: 30px;
     margin-right: 20px;

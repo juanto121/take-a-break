@@ -11,6 +11,7 @@ import RoutineActions from '../../components/RoutineActions/RoutineActions'
 import Reasons from '../../components/Reasons/Reasons'
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 import SessionLoader from '../../components/SessionLoader/SessionLoader'
+import AntiLeaderBoard from '../../components/AntiLeaderBoard/AntiLeaderBoard'
 
 
 const SessionContainer = styled.div`
@@ -30,6 +31,7 @@ const Goals = styled.div`
   padding: 0 10px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
 `
 
 const Footer = styled.div`
@@ -123,7 +125,7 @@ const Session = () => {
             <RoutineActions loading={completingSession} finishSession={onFinisSession} sessionCompleted={sessionCompleted}></RoutineActions>
             <Goals>
                 <ActivityLog sessions={userSessions}/>
-                <Reasons></Reasons>
+                <AntiLeaderBoard />
             </Goals>
             <Footer></Footer>
         </SessionContainer>

@@ -37,9 +37,6 @@ function App() {
                             <Route path={'/break-session'} exact>
                                 <Session />
                             </Route>
-                            <Route path={'/leaderboard'} exact>
-                                <AntiLeaderBoard />
-                            </Route>
                         </Content>
                     </AppContainer>
                 </Router>

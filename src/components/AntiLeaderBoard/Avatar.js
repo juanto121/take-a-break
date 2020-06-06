@@ -25,7 +25,4 @@ function Avatar(props) {
     )
 }
 
-
-
-
 export default Avatar;

@@ -13,7 +13,7 @@ const ActivityLogContainer = styled.div`
   margin-bottom: 30px;
 `
 const Dots = styled.div`
-  max-width: 250px;
+  max-width: 400px;
   display: grid;
   grid-gap: 0.5em;
   grid-template-columns: repeat(auto-fill, 28px);

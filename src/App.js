@@ -22,24 +22,24 @@ const Content = styled.div`
 `
 
 function App() {
-    return (
-        <Theme>
-            <AuthProvider>
-                <Router>
-                    <AppContainer>
-                        <Content>
-                            <Route path={'/'} exact>
-                                <Start/>
-                            </Route>
-                            <Route path={'/break-session'} exact>
-                                <Session/>
-                            </Route>
-                        </Content>
-                    </AppContainer>
-                </Router>
-            </AuthProvider>
-        </Theme>
-    )
+  return (
+    <Theme>
+      <AuthProvider>
+        <Router>
+          <AppContainer>
+            <Content>
+              <Route path={'/'} exact>
+                <Start/>
+              </Route>
+              <Route path={'/break-session'} exact>
+                <Session/>
+              </Route>
+            </Content>
+          </AppContainer>
+        </Router>
+      </AuthProvider>
+    </Theme>
+  )
 }
 
 export default App

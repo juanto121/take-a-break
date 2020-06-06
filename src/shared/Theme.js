@@ -4,6 +4,7 @@ import { ThemeProvider } from 'styled-components'
 const theme = {
     colors: {
         darkgreen: "#25475E",
+        midBlue: "#345974",
         lightgreen: "#5C89A8",
         palegreen: "#A6F0D6",
         coolgreen: "#7FD684",

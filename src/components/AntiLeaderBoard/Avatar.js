@@ -12,6 +12,7 @@ const AvatarContainer = styled.div`
     margin: 0px;
 `
 const FormatedImage = styled.img`
+    object-fit: cover;
     height: ${props => props.size};
     width: ${props => props.size};
     border-radius: 50%;

@@ -7,9 +7,6 @@ import './App.css'
 import Session from './containers/session/Session'
 import AuthProvider from './shared/Auth'
 
-
-import AntiLeaderBoard from './components/AntiLeaderBoard/AntiLeaderBoard'
-
 const AppContainer = styled.div`
   background-color: ${p => p.theme.colors.darkgreen};
   height: 100vh;
@@ -25,24 +22,24 @@ const Content = styled.div`
 `
 
 function App() {
-    return (
-        <Theme>
-            <AuthProvider>
-                <Router>
-                    <AppContainer>
-                        <Content>
-                            <Route path={'/'} exact>
-                                <Start />
-                            </Route>
-                            <Route path={'/break-session'} exact>
-                                <Session />
-                            </Route>
-                        </Content>
-                    </AppContainer>
-                </Router>
-            </AuthProvider>
-        </Theme>
-    )
+  return (
+    <Theme>
+      <AuthProvider>
+        <Router>
+          <AppContainer>
+            <Content>
+              <Route path={'/'} exact>
+                <Start/>
+              </Route>
+              <Route path={'/break-session'} exact>
+                <Session/>
+              </Route>
+            </Content>
+          </AppContainer>
+        </Router>
+      </AuthProvider>
+    </Theme>
+  )
 }
 
 export default App

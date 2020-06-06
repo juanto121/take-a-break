@@ -1,107 +1,28 @@
 import React, { useEffect, useState } from 'react'
-import styled from 'styled-components'
 import { FaSkullCrossbones } from 'react-icons/fa'
 import BreakService from '../../services/SessionService'
 import Avatar from './Avatar'
 import UserCard from './UserCard'
 import remind from '../../services/remind'
 import LeaderBoardLoader from '../LeaderBoardLoader/LeaderBoardLoader'
+import {
+  AntiLeaderBoardContainer,
+  FirstAvatarContainer,
+  ListContainer,
+  ListItem,
+  Rank,
+  SecondAvatarContainer,
+  ThirdAvatarContainer,
+  Title,
+  TopOneScore,
+  TopThreeContainer,
+  TopThreeName,
+  TopTwoAndThreeScore,
+} from './AntiLeaderBoard.styled'
 
 const firstAvatarSize = '120px'
 const secondAvatarSize = '90px'
 const thirdAvatarSize = '90px'
-
-const AntiLeaderBoardContainer = styled.div`
-  width: 350px;
-  height: 500px;
-  display: flex;
-  flex-direction: column;
-  border-color: ${p => p.theme.colors.lightgreen};
-  border-width: 2px;
-  align-items: center;
-`
-
-const Title = styled.h3`
-  margin-top: 0;
-  color: ${p => p.theme.colors.palegreen};
-  font-size: 24px;
-  text-align: center;
-  span {
-    color: ${p => p.theme.colors.palegreen};
-    font-weight: 200;
-  }
-`
-const TopThreeContainer = styled.div`
-  border-color: green;
-  border-width: 2px;
-  display: flex;
-  justify-content: center;
-  position: relative;
-`
-
-const AvatarContainer = styled.div`
-  text-align: center;
-`
-
-const FirstAvatarContainer = styled(AvatarContainer)`
-  z-index: 2;
-`
-
-const SecondAvatarContainer = styled(AvatarContainer)`
-  position: absolute;
-  bottom: -15px;
-  left: -80px;
-`
-
-const ThirdAvatarContainer = styled(AvatarContainer)`
-  position: absolute;
-  bottom: -15px;
-  left: 110px;
-  z-index: 1;
-`
-
-const TopThreeName = styled.p`
-  margin: 5px;
-  font-size: 12px;
-  color: white;
-  text-align: center;
-  text-transform:capitalize;
-`
-
-const TopOneScore = styled.p`
-  margin: 0;
-  font-size: 25px;
-  text-align: center;
-  color: ${props => props.theme.colors.palegreen};
-`
-
-const TopTwoAndThreeScore = styled.p`
-  margin: 0;
-  font-size: 20px;
-  text-align: center;
-  color: ${props => props.theme.colors.palegreen};
-`
-
-const Rank = styled(TopThreeName)`
-  font-size: 14px;
-`
-const ListContainer = styled.ol`
-  list-style: none;
-  padding: 0;
-`
-
-const ListItem = styled.li`
-  position: relative;
-  &:before {
-    content:attr(data-count)'.';
-    font-size: 14px;
-    color: white;
-    line-height: 1;
-    position: absolute;
-    left: -18px;
-    top: 14px;
-  }
-`
 
 function CardListItem(props) {
   return (

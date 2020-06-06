@@ -93,6 +93,7 @@ function CardListItem(props) {
 }
 
 function AntiLeaderBoard() {
+
     const user = {
         'name': 'Martha Kent',
         'score': -20,

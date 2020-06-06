@@ -47,6 +47,19 @@ class BreakService {
         }
     }
 
+    static async getLeaderboard() {
+        try {
+            const session = await axios({
+                url: `${BREAK_API_URL}/sessions/leaderboard`,
+                method: 'get'
+            })
+            return session.data
+        } catch(err) {
+            console.error(err)
+            return null
+        }
+    }
+
 }
 
 export default BreakService

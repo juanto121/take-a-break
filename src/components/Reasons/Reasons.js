@@ -4,7 +4,7 @@ import styled from 'styled-components'
 const Container = styled.div`
   flex-grow: 1;
   border: 2px dashed ${p => p.theme.colors.lightgreen};
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 20px;
 `
 

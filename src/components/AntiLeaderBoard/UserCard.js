@@ -3,11 +3,11 @@ import styled from 'styled-components'
 import Avatar from './Avatar'
 
 
-const HEIGHT = '50px';
+const HEIGHT = '45px';
 
 const CardContainer = styled.div`
   box-sizing: border-box;
-  width: 270px;
+  width: 230px;
   height: ${HEIGHT};
   display: flex;
   border-radius: 25px 25px;
@@ -16,19 +16,21 @@ const CardContainer = styled.div`
 `
 
 const Name = styled.p`
-  font-size: 16px;
+  font-size: 12px;
   color: white;
   text-align: left;
   margin-left: 5px;
   flex: 1 1 136px;
+  margin-bottom: 0px;
+  margin-top: 16px;
 `
 
 const Score = styled.p`
   flex: 1 1 20px;
   margin: 0;
-  font-size: 22px;
+  font-size: 16px;
   text-align: center;
-  height: 50px;
+  height: ${HEIGHT};
   color: ${props => props.theme.colors.palegreen};
   display: flex;
   align-items: center;
@@ -37,7 +39,7 @@ const Score = styled.p`
 function UserCard(props) {
     return (
         <CardContainer>
-            <Avatar size="50px" photoSrc={props.photoSrc}/>
+            <Avatar size={HEIGHT} picture={props.picture}/>
             <Name>{props.name}</Name>
             <Score><span>{props.score}</span></Score>
         </CardContainer>

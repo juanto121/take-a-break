@@ -37,6 +37,9 @@ const Goals = styled.div`
 const LeftColumn = styled.div`
   flex: 1;
   max-width: 330px;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
 `
 
 const Footer = styled.div`
@@ -102,7 +105,7 @@ const Session = () => {
     getRoutine()
   }, [])
 
-  const onFinisSession = async () => {
+  const onFinishSession = async () => {
     setCompletingSession(true)
     await BreakService.completeSession({ email: currentUserEmail, completed: true })
     setSessionCompleted(true)
@@ -127,7 +130,7 @@ const Session = () => {
       <Routine>
         {steps}
       </Routine>
-      <RoutineActions loading={completingSession} finishSession={onFinisSession}
+      <RoutineActions loading={completingSession} finishSession={onFinishSession}
                       sessionCompleted={sessionCompleted}></RoutineActions>
       <Goals>
         <LeftColumn>

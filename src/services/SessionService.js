@@ -47,7 +47,7 @@ class BreakService {
         }
     }
 
-    static async getLeaderboard() {
+    static async getAntiLeaderboard() {
         try {
             const session = await axios({
                 url: `${BREAK_API_URL}/sessions/leaderboard`,

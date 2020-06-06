@@ -110,6 +110,7 @@ const TopThreeName = styled.p`
   font-size: 12px;
   color: white;
   text-align: center;
+  text-transform:capitalize;
 `
 
 const TopOneScore = styled.p`
@@ -168,7 +169,7 @@ const getAntiLeaders = async () => {
   if (!antiLeaders) {
     antiLeaders = []
   }
-  while (antiLeaders.length < 6) {
+  while (antiLeaders.length < 7) {
     antiLeaders.push(defaultUser)
   }
   return antiLeaders
@@ -219,6 +220,7 @@ function AntiLeaderBoard() {
         <CardListItem key="4" index="4" name={usersInfo[3].name} score={usersInfo[3].score} picture={usersInfo[3].picture} />
         <CardListItem key="5" index="5" name={usersInfo[4].name} score={usersInfo[4].score} picture={usersInfo[4].picture} />
         <CardListItem key="6" index="6" name={usersInfo[5].name} score={usersInfo[5].score} picture={usersInfo[5].picture} />
+        <CardListItem key="7" index="7" name={usersInfo[6].name} score={usersInfo[6].score} picture={usersInfo[6].picture} />
       </ListContainer>
     </AntiLeaderBoardContainer>
   )

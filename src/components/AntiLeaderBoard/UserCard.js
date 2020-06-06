@@ -23,6 +23,7 @@ const Name = styled.p`
   flex: 1 1 136px;
   margin-bottom: 0px;
   margin-top: 16px;
+  text-transform:capitalize;
 `
 
 const Score = styled.p`

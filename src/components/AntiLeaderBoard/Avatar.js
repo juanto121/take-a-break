@@ -41,16 +41,21 @@ const AvatarCoverText = styled.p`
     color: rgba(255, 255, 255, 1.0)
  }
 `
+function capitalizeName(name) {
+    return name.replace(/\b(\w)/g, s => s.toUpperCase());
+  }
 
 function Avatar(props) {
+
+    const name = props.name ? capitalizeName(props.name) : 'this sloth'
 
     if (props.interactive) {
         return (
             <AvatarContainer bordered={props.bordered} size={props.size} shadowed={props.shadowed}>
-                <FormatedImage src={props.picture} size={props.size}/>
+                <FormatedImage src={props.picture} size={props.size} />
                 <AvatarCover size={props.size} onClick={props.onClick}>
                     <AvatarCoverText>
-                        Remind to do a pause
+                        Remind {name} to take a break
                     </AvatarCoverText>
                 </AvatarCover>
             </AvatarContainer>
@@ -58,7 +63,7 @@ function Avatar(props) {
     } else {
         return (
             <AvatarContainer bordered={props.bordered} size={props.size} shadowed={props.shadowed}>
-                <FormatedImage src={props.picture} size={props.size}/>
+                <FormatedImage src={props.picture} size={props.size} />
             </AvatarContainer>
         )
     }

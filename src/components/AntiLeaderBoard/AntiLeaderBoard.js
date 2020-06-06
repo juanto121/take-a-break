@@ -199,7 +199,8 @@ function AntiLeaderBoard() {
             shadowed
             onClick={() => {remind(usersInfo[0]) }}
             size={firstAvatarSize}
-            picture={usersInfo[0].picture} />
+            picture={usersInfo[0].picture}
+            name={usersInfo[0].name}/>
           <TopThreeName>{usersInfo[0].name}</TopThreeName>
           <TopOneScore>{usersInfo[0].score}</TopOneScore>
         </FirstAvatarContainer>

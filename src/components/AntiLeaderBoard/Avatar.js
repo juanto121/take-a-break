@@ -23,7 +23,8 @@ const FormatedImage = styled.img`
 const AvatarCover = styled(AvatarContainer)`
     background-color: rgba(0,0,0,0.0);
     ${AvatarContainer}:hover & {
-        background-color: rgba(0,0,0,0.3);
+      cursor: pointer;
+      background-color: rgba(0,0,0,0.7);
     }
     display: flex;
     align-items: center;
@@ -32,8 +33,8 @@ const AvatarCover = styled(AvatarContainer)`
 `
 
 const AvatarCoverText = styled.p`
- maring: 0px;
- padding: 0px;
+ margin: 0px;
+ padding: 11px;
  color: rgba(255, 255, 255, 0.0);
  font-size: 14px;
  font-weight: 400;

@@ -7,7 +7,7 @@ import remind from '../../services/remind'
 import LeaderBoardLoader from '../LeaderBoardLoader/LeaderBoardLoader'
 import {
   AntiLeaderBoardContainer,
-  FirstAvatarContainer,
+  FirstAvatarContainer, Instructions,
   ListContainer,
   ListItem,
   Rank,
@@ -120,6 +120,9 @@ function AntiLeaderBoard() {
         <CardListItem key="7" index="7" name={usersInfo[6].name} score={usersInfo[6].score}
                       picture={usersInfo[6].picture}/>
       </ListContainer>
+      <Instructions>
+        The score shows the number of days since the last active break taken.
+      </Instructions>
     </AntiLeaderBoardContainer>
   )
 }

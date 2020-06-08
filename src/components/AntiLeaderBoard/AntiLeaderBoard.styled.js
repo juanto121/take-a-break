@@ -91,3 +91,10 @@ export const ListItem = styled.li`
     top: 14px;
   }
 `
+
+export const Instructions = styled.p`
+  margin: 0;
+  max-width: 250px;
+  font-size: 0.7em;
+  color: ${p=>p.theme.colors.lightgreen}
+`

@@ -4,6 +4,7 @@ import BreakMessage from '../../components/breakMessage/BreakMessage'
 import Timer from '../../components/timer/Timer'
 import Routine from '../../components/routine/Routine'
 import BreakService from '../../services/SessionService'
+import SessionService from '../../services/SessionService'
 import StorageService from '../../services/LocalStorage'
 import RoutineStep from '../../components/routineStep/RoutineStep'
 import ActivityLog from '../../components/activityLog/ActivityLog'
@@ -60,6 +61,8 @@ const Session = () => {
 
   const [completingSession, setCompletingSession] = useState(false)
 
+  const [isLeader, setIsLeader] = useState(false)
+
   const startSession = async (email) => {
     await BreakService.startSession({ email, started: true })
   }
@@ -105,6 +108,19 @@ const Session = () => {
     getRoutine()
   }, [])
 
+  useEffect(() => {
+    const getLeaders = async () => {
+      const leaders = await SessionService.getLeaderboard()
+      let isLeader = false
+      for (let leader of leaders.leaders) {
+        isLeader = leader.name === currentUserEmail.split('@')[0]
+      }
+      setIsLeader(isLeader)
+    }
+    if (currentUserEmail)
+      getLeaders()
+  }, [currentUserEmail])
+
   const onFinishSession = async () => {
     setCompletingSession(true)
     await BreakService.completeSession({ email: currentUserEmail, completed: true })
@@ -130,8 +146,11 @@ const Session = () => {
       <Routine>
         {steps}
       </Routine>
-      <RoutineActions loading={completingSession} finishSession={onFinishSession}
-                      sessionCompleted={sessionCompleted}></RoutineActions>
+      <RoutineActions
+        isLeader={isLeader}
+        loading={completingSession}
+        finishSession={onFinishSession}
+        sessionCompleted={sessionCompleted}></RoutineActions>
       <Goals>
         <LeftColumn>
           <ActivityLog sessions={userSessions}/>

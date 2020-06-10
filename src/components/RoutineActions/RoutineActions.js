@@ -11,6 +11,7 @@ const Container = styled.div`
 `
 
 const Button = styled.button`
+  position: relative;
   cursor: ${p => p.disabledButton ? 'auto' : 'pointer'};
   margin-top: 10px;
   max-width: 300px;
@@ -28,11 +29,20 @@ const Button = styled.button`
   }
 `
 
+const LeaderFigurine = styled.div`
+  display: ${p=>p.show?"block":"none"};
+  position: absolute;
+  font-size: 2em;
+  top: -20px;
+  left: -10px;
+  transform: rotate(-28deg);
+`
+
+const CROWN = '👑'
 const emojiList = ['🎉', '🙌', '🎆', '🔥', '🏃']
 
-const RoutineActions = ({ finishSession, sessionCompleted, loading }) => {
+const RoutineActions = ({ finishSession, sessionCompleted, loading, isLeader }) => {
     const [emojiIndex, setEmojiIndex] = useState(parseInt(Math.random() * 5))
-
 
     return (
         <Container>
@@ -55,6 +65,7 @@ const RoutineActions = ({ finishSession, sessionCompleted, loading }) => {
                         width={20}
                     /></div>:null
                 }
+                <LeaderFigurine title={"Congrats on keeping your healthy habits strong!. You are in the top 10! (of real leaders)"} show={isLeader}><span>{CROWN}</span></LeaderFigurine>
             </Button>
         </Container>
     )
